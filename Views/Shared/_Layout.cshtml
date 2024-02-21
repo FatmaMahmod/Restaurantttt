@@ -34,50 +34,36 @@
 <body>
  
     <header id="header" class="header fixed-top d-flex align-items-center">
-        <div class="container d-flex align-items-center justify-content-between">
-
-            <a href="index.html" class="logo d-flex align-items-center me-auto me-lg-0">
-
-                <h1>Yummy<span>.</span></h1>
-            </a>
-
+        <div class="container-fluid d-flex align-items-center justify-content-between">         
+                 <a  asp-area="" asp-controller="Home" asp-action="Index">
+                    <h1 style="color:black; font-weight:bold; font-size:160%;">Yummy<span style="color:var(--color-primary);">.</span></h1>
+                 </a> 
+         
+                @* <h1>Yummy<span>.</span></h1> *@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
-                    <li>
+@*                     <li>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
+                    </li> *@
                     <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#chefs">Chefs</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                    <li class="dropdown">
-                        <a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                        <ul>
-                            <li><a href="#">Drop Down 1</a></li>
-                            <li class="dropdown">
-                                <a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                                <ul>
-                                    <li><a href="#">Deep Drop Down 1</a></li>
-                                    <li><a href="#">Deep Drop Down 2</a></li>
-                                    <li><a href="#">Deep Drop Down 3</a></li>
-                                    <li><a href="#">Deep Drop Down 4</a></li>
-                                    <li><a href="#">Deep Drop Down 5</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Drop Down 2</a></li>
-                            <li><a href="#">Drop Down 3</a></li>
-                            <li><a href="#">Drop Down 4</a></li>
-                        </ul>
-                    </li>
+
+                @*     <li class="dropdown">
+ *@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
-            <a class="btn-book-a-table" href="#book-a-table">Book a Table</a>
+            <a class="btn-book-a-table" asp-controller="Booking" asp-action="Book">Book a Table</a>
+            @* <a asp-action="Index">Back to List</a> *@
+
+
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
             
@@ -87,17 +73,23 @@
     </header>
     <br />
     <br />
-    <br />
-    <br />
- 
-    <div class="container">
+   
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
   
-   @*  <footer id="footer" class="footer">
+    <div id="preloader"></div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+@*    <footer id="footer" class="footer" >
 
         <div class="container">
             <div class="row gy-3">
@@ -163,14 +155,6 @@
 
     </footer>
 
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> *@
-
-    <div id="preloader"></div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/main.js"></script>
-    <script src="~/js/site.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> 
+ *@
 </html>
