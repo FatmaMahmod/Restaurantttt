@@ -16,8 +16,11 @@ namespace Yummy.Serviece
 
         public List<Meal> GetAllMeal()
         {
+            //List<Meal>me=_context.Meals.ToList();
             // Placeholder logic to get all meals
-            return _context.Meals.Include(op=>op.Category).ToList();
+            return _context.Meals.Include(op => op.Category).ToList();
+            //return _context.Meals.ToList();
+            //return me;
         }
 
         public Meal GetMealDetails(int id)

@@ -11,6 +11,8 @@ namespace Yummy.Models
         public int Rating { get; set; }
         [Required(ErrorMessage = "review required")]
         public string? Comment { get; set; }
+        public int UserId { get; set; }
+        public string UserName { get; set; }
 
     }
 }

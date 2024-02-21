@@ -254,7 +254,6 @@ namespace Yummy.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JobTitle")
@@ -283,7 +282,6 @@ namespace Yummy.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventImage")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EventName")
@@ -292,6 +290,9 @@ namespace Yummy.Data.Migrations
 
                     b.Property<int>("EventPricce")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("dateTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -321,8 +322,10 @@ namespace Yummy.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("MealPrice")
+                        .HasColumnType("int");
+
                     b.Property<string>("MealRating")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -346,6 +349,13 @@ namespace Yummy.Data.Migrations
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
