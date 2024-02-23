@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Yummy.Data;
+using Yummy.Models;
 using Yummy.Repository;
 using Yummy.Serviece;
 using YUMMY.Models;
@@ -9,28 +10,24 @@ namespace Yummy
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static  void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(connectionString));
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-              options.UseSqlServer(builder.Configuration.GetConnectionString("myConn"))
-          );
-            //builder.Services.AddDbContext<YummyDB>(options =>
-            //   options.UseSqlServer(connectionString));
-            //builder.Services.AddDbContext<YummyDB>(
-            //  //op => op.UseSqlServer("Data Source=.;Initial Catalog=RepoDB_CU_44;Integrated Security=True")
-            //  //op => op.UseSqlServer(builder.Configuration["ConnectionStrings:myConn"])
-            //  op => op.UseSqlServer(builder.Configuration.GetConnectionString("myConn"))
-            //   );
+                options.UseSqlServer(connectionString));
+        
+           
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultUI()
+            .AddDefaultTokenProviders();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
             builder.Services.AddScoped<ICategory,CategoryRepoService>();
             builder.Services.AddScoped<IChef,ChefRepoService>();
@@ -38,6 +35,19 @@ namespace Yummy
             builder.Services.AddScoped<IMeal, MealRepoService>();
             builder.Services.AddScoped<IReview, ReviewRepoService>();
             builder.Services.AddScoped<IHome, HomeRepoService>();
+            builder.Services.AddAuthentication().AddFacebook(options =>
+            {
+                options.ClientId = "905510721246232";
+                options.ClientSecret = "8d1c12b6c3aed2109c043479961217c8";
+            }
+               );
+
+            builder.Services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "514812010415-h805fa5ctrv3kauc3natatvk3n95gmrt.apps.googleusercontent.com";
+                options.ClientSecret = "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";
+            }
+               );
 
             var app = builder.Build();
 
@@ -65,6 +75,7 @@ namespace Yummy
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+            
 
             app.Run();
         }

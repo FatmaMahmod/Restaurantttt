@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Yummy.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<div>
+    <button>
+        <a class="btn btn-outline-danger btn-lg" asp-area="" asp-controller="Admin" asp-action="AdminView">Back To Admin Page</a>
+    </button>
+</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+           @*  <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th> *@
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td> *@
+            
+        </tr>
+}
+    </tbody>
+</table>

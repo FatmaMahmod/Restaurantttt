@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YUMMY.Models
 {
@@ -12,6 +14,9 @@ namespace YUMMY.Models
         public string JobTitle { get; set; }
         [Required(ErrorMessage = "You Should enter a brief about the Chef")]
         public string Brief { get; set; }
-        public string Image { get; set; }
+        public string? Image { get; set; }
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
     }
 }

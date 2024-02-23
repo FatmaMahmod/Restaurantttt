@@ -1,0 +1,62 @@
+﻿@model YUMMY.Models.Chef
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Chef</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="JobTitle" class="control-label"></label>
+                <input asp-for="JobTitle" class="form-control" />
+                <span asp-validation-for="JobTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Brief" class="control-label"></label>
+                <input asp-for="Brief" class="form-control" />
+                <span asp-validation-for="Brief" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input type="file" asp-for="ImageFile" onchange="loadFile(event)" class="form-control" />
+                <img id="myImg" height="200" />
+                @* <input asp-for="MealImage" class="form-control" /> *@
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        var loadFile = function (event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var myImg = document.getElementById('myImg');
+                myImg.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+}

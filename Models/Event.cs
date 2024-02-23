@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YUMMY.Models
 {
@@ -12,6 +14,11 @@ namespace YUMMY.Models
         public string EventDescription { get; set; }
         [Required(ErrorMessage = "You Should enter The Price of the Event")]
         public int EventPricce { get; set; }
-        public string EventImage { get; set; }
+        public DateTime? dateTime { get; set; }
+        public string? EventImage { get; set; }
+        [NotMapped]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
+        
     }
 }
