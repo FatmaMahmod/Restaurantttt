@@ -5,28 +5,36 @@
 
 <h1>AdminView</h1>
 <h1 style="text-align:center ">Welcom @User.Identity.Name</h1>
-<h2>
-    <button>
+<h2 style="text-align:center " style="height:200px width:200px " >
+    @* <img src="/img/hero-img.png"  /> *@
+    <a class="nav-link text-dark " asp-area="" asp-controller="AdMeal" asp-action="Index" style="display:inline"><img src="/img/mealIcon.png" /></a>
+    
+    <button type="button" class="btn btn-outline-danger btn-lg ">
         <a class="nav-link text-dark" asp-area="" asp-controller="AdMeal" asp-action="Index">Meals</a>
     </button>
 </h2>
-<h2>
-    <button>
+<h2 style="text-align:center " style="height:200px width:200px">
+    @* <img src="/img/chefs - Copy/chefs-1.jpg"  /> *@
+    <a class="nav-link text-dark" asp-area="" asp-controller="AdChef" asp-action="Index" style="display:inline"><img src="/img/chefIcon.png" /></a>
+    <button type="button" class="btn btn-outline-danger btn-lg ">
         <a class="nav-link text-dark" asp-area="" asp-controller="AdChef" asp-action="Index">Chefs</a>
     </button>
 </h2>
-<h2>
-    <button>
+<h2 style="text-align:center ">
+    <img src="/img/events-1.jpg" style="height:200px width:200px" />
+    <button type="button" class="btn btn-outline-danger btn-lg ">
         <a class="nav-link text-dark" asp-area="" asp-controller="AdEvent" asp-action="Index">Events</a>
     </button>
 </h2>
-<h2>
-    <button>
+<h2 style="text-align:center ">
+    <img src="/img/about-2.jpg" style="height:200px width:200px" />
+    <button type="button" class="btn btn-outline-danger btn-lg ">
         <a class="nav-link text-dark" asp-area="" asp-controller="AdCategory" asp-action="Index">Categories</a>
     </button>
 </h2>
-<h2>
-    <button>
+<h2 style="text-align:center ">
+    <img src="/img/reviews-img.jpg" style="height:200px width:200px"/>
+    <button type="button" class="btn btn-outline-danger btn-lg ">
         <a class="nav-link text-dark" asp-area="" asp-controller="AdReviews" asp-action="Index">Reviews</a>
     </button>
 </h2>
