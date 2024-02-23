@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240223122259_addadminv3")]
+    partial class addadminv3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Yummy.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
-                            ConcurrencyStamp = "8a7a0315-33ba-4f05-a8c4-0c22338d8ab4",
+                            Id = "7c4d7292-ddb1-4cd7-a0ef-426bf63720cd",
+                            ConcurrencyStamp = "f6bbf28d-3e6e-46c5-814b-9eb629b44d7b",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "2",
-                            ConcurrencyStamp = "40dd3289-c687-47dd-b0dc-655db3711977",
+                            Id = "d2b88042-cf56-4f5d-b87d-391b6e337b77",
+                            ConcurrencyStamp = "ecf5e2ab-1d35-40d6-96ae-6823f667b446",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -370,6 +372,9 @@ namespace Yummy.Data.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 

@@ -10,7 +10,7 @@ namespace Yummy
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static  void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +36,20 @@ namespace Yummy
             builder.Services.AddScoped<IEvent, EventRepoService>();
             builder.Services.AddScoped<IMeal, MealRepoService>();
             builder.Services.AddScoped<IReview, ReviewRepoService>();
-          
+            builder.Services.AddAuthentication().AddFacebook(options =>
+            {
+                options.ClientId = "905510721246232";
+                options.ClientSecret = "8d1c12b6c3aed2109c043479961217c8";
+            }
+               );
+
+            builder.Services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "514812010415-h805fa5ctrv3kauc3natatvk3n95gmrt.apps.googleusercontent.com";
+                options.ClientSecret = "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";
+            }
+               );
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -63,6 +76,7 @@ namespace Yummy
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
+            
 
             app.Run();
         }

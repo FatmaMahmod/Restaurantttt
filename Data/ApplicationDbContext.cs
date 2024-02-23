@@ -22,19 +22,21 @@ namespace Yummy.Data
             builder.Entity<IdentityRole>().HasData(
                 new IdentityRole()
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    //Id = Guid.NewGuid().ToString(),
+                    Id = "1",
                     Name = "Admin",
                     NormalizedName = "admin",
                     ConcurrencyStamp = Guid.NewGuid().ToString()
                 },
                 new IdentityRole()
                 {
-                    Id = Guid.NewGuid().ToString(),
+                    //Id = Guid.NewGuid().ToString(),
+                    Id = "2",
                     Name = "User",
                     NormalizedName = "user",
                     ConcurrencyStamp = Guid.NewGuid().ToString()
                 }
-                );
+                ) ;
             base.OnModelCreating(builder);
         }
     }

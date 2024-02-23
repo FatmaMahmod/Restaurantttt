@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240223174539_removeusername")]
+    partial class removeusername
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Yummy.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
-                            ConcurrencyStamp = "8a7a0315-33ba-4f05-a8c4-0c22338d8ab4",
+                            Id = "2846775f-37c0-4f5a-8a6c-44101f4691ea",
+                            ConcurrencyStamp = "15fe8193-ddd9-4dd4-a977-2da1a166806b",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "2",
-                            ConcurrencyStamp = "40dd3289-c687-47dd-b0dc-655db3711977",
+                            Id = "4e69c7f1-5497-455b-b884-6264b6d263a8",
+                            ConcurrencyStamp = "2a48a2a1-5640-4c2c-a283-f3bfaadeda58",
                             Name = "User",
                             NormalizedName = "user"
                         });
