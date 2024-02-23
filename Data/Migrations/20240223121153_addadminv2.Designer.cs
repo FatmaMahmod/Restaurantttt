@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240223121153_addadminv2")]
+    partial class addadminv2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,15 +53,15 @@ namespace Yummy.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7c4d7292-ddb1-4cd7-a0ef-426bf63720cd",
-                            ConcurrencyStamp = "f6bbf28d-3e6e-46c5-814b-9eb629b44d7b",
+                            Id = "66e6b1b3-5bd8-4887-98a5-6f01c4da1d9a",
+                            ConcurrencyStamp = "c3374c2d-b3be-47dc-b9b1-727c37d2f2cf",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "d2b88042-cf56-4f5d-b87d-391b6e337b77",
-                            ConcurrencyStamp = "ecf5e2ab-1d35-40d6-96ae-6823f667b446",
+                            Id = "03553b07-71c9-46ac-b744-a0a183449e94",
+                            ConcurrencyStamp = "ff2d1c46-b3cd-4749-a2cc-f7cb0173f730",
                             Name = "User",
                             NormalizedName = "user"
                         });
