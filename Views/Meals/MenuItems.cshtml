@@ -1,0 +1,21 @@
+﻿@model IEnumerable<YUMMY.Models.Meal>
+
+@{
+    ViewData["Title"] = "MenuItems";
+}
+
+<div class="row gy-5 text-center">
+    @foreach (var meal in Model)
+    {
+        <div class="col-lg-4 menu-item">
+            <img src="~/img/menu/@meal.MealImage" alt="Meal Image" style="max-width: 300px; max-height: 300px;" />
+            <br /> <br />
+            <h4>@meal.MealName</h4>
+            <p class="ingredients">@meal.MealIngradints</p>
+             <p class="price">$@meal.MealPrice</p> 
+        </div>
+
+
+
+    }
+</div>
