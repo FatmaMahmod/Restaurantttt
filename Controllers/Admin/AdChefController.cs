@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Yummy.Repository;
 using YUMMY.Models;
 
 namespace Yummy.Controllers.Admin
 {
+    [Authorize(Roles = "Admin")]
     public class AdChefController : Controller
     {
         public IChef Chef { get; set; }

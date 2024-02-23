@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,17 +12,14 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240222204352_trytoadduserreview")]
+    partial class trytoadduserreview
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-
-                .HasAnnotation("ProductVersion", "6.0.27")
-
-//                 .HasAnnotation("ProductVersion", "6.0.21")
-
+                .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -55,15 +53,15 @@ namespace Yummy.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1650181a-4eb1-48b4-b6a1-706d21f84f3f",
-                            ConcurrencyStamp = "657b5e18-698b-4574-9b9a-885a29e9c1d3",
+                            Id = "54b8c81a-8d50-4a01-a63b-742ff30029ff",
+                            ConcurrencyStamp = "0032afe7-ad23-4a95-9f0f-75b658f943b3",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
-                            Id = "f855acc2-9ce4-4df9-b032-abe3c219be79",
-                            ConcurrencyStamp = "ba183aa5-c2f8-41be-b50e-a55cc4e5e396",
+                            Id = "7e6698f5-388e-415d-ab5c-6d03dffa3094",
+                            ConcurrencyStamp = "bee7b43f-c161-4c57-9162-bb8e0a10d380",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -365,6 +363,9 @@ namespace Yummy.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("Comment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -373,14 +374,16 @@ namespace Yummy.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("ApplicationUserId");
 
                     b.ToTable("Reviews");
                 });
@@ -449,11 +452,9 @@ namespace Yummy.Data.Migrations
 
             modelBuilder.Entity("Yummy.Models.Review", b =>
                 {
-                    b.HasOne("Yummy.Data.ApplicationUser", "User")
+                    b.HasOne("Yummy.Data.ApplicationUser", null)
                         .WithMany("Reviews")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
+                        .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("Yummy.Data.ApplicationUser", b =>

@@ -1,8 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Yummy.Repository;
 
+using Microsoft.AspNetCore.Http;
+=======
+
+using Microsoft.AspNetCore.Mvc;
+using Yummy.Models;
+using Yummy.Repository;
+using Microsoft.AspNetCore.Identity;
 namespace Yummy.Controllers.Admin
 {
     [Authorize]
@@ -18,8 +22,19 @@ namespace Yummy.Controllers.Admin
         {
             return View(Review.GetAllReview());
         }
+        public ActionResult Create()
+        {
+            ViewBag.Name = User.Identity.Name;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(Review review)
+        {
+            Review.InsertReview(review);
+            return RedirectToAction(nameof(Index));
+        }
 
-       
-       
+
+
     }
 }
