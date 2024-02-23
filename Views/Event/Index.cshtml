@@ -1,0 +1,23 @@
+﻿@model IEnumerable<YUMMY.Models.Event>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide event-item d-flex flex-column justify-content-end" style="background-image: url('/images/@item.EventImage')">
+                        <h3>@item.EventName</h3>
+                        <div class="price align-self-start">@item.EventPricce</div>
+                        <p class="description">
+                            @item.EventDescription
+                        </p>
+                    </div>
+
+                    <!-- End Event item -->
+                }
+
+            
