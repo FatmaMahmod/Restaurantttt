@@ -12,9 +12,9 @@ namespace Yummy.Serviece
             Context = context;
         }
 
-        public ApplicationUser FindUser(string Name)
+        public ApplicationUser FindUser(string Email)
         {
-            return Context.Users.FirstOrDefault(op => op.UserName == Name);
+            return Context.Users.FirstOrDefault(op => op.UserName == Email);
         }
     }
 }
