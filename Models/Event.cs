@@ -14,7 +14,9 @@ namespace YUMMY.Models
         public string EventDescription { get; set; }
         [Required(ErrorMessage = "You Should enter The Price of the Event")]
         public int EventPricce { get; set; }
-        public DateTime? dateTime { get; set; }
+		//[RegularExpression("", ErrorMessage = "this date is reserved")]
+		//[Required(ErrorMessage = "this field required")]
+		public DateTime? dateTime { get; set; }
         public string? EventImage { get; set; }
         [NotMapped]
         [DisplayName("Upload File")]
