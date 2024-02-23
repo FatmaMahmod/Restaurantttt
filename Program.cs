@@ -15,8 +15,11 @@ namespace Yummy
 
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(connectionString));
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+              options.UseSqlServer(builder.Configuration.GetConnectionString("myConn"))
+          );
             //builder.Services.AddDbContext<YummyDB>(options =>
             //   options.UseSqlServer(connectionString));
             //builder.Services.AddDbContext<YummyDB>(
@@ -34,6 +37,7 @@ namespace Yummy
             builder.Services.AddScoped<IEvent, EventRepoService>();
             builder.Services.AddScoped<IMeal, MealRepoService>();
             builder.Services.AddScoped<IReview, ReviewRepoService>();
+            builder.Services.AddScoped<IHome, HomeRepoService>();
 
             var app = builder.Build();
 
