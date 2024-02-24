@@ -32,8 +32,7 @@
             <h2>About Us</h2>
             <p>Learn More <span>About Us</span></p>
         </div>
-       
-           
+
         <div class="row gy-4">
             <div class="col-lg-7 position-relative about-img" style="background-image: url(/img/about.jpg) ;">
                 <div class="call-us position-absolute">
@@ -215,10 +214,11 @@
                 </div>
 
                 <div class="row gy-5">
-
                     <div class="col-lg-4 menu-item">
-                        <a href="~/img/menu/menu-item-1.png" class="glightbox"><img src="~/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
-                        <h4>Magnam Tiste</h4>
+                        <a  class="glightbox"><img src="~/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                         <a asp-controller="Meals" asp-action="Details" asp-route-id="10">
+                            <h4>Magnam Tiste</h4>
+                        </a>
                         <p class="ingredients">
                             Lorem, deren, trataro, filede, nerada
                         </p>
@@ -941,8 +941,7 @@
                 <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
             <div class="text-center"><button type="submit">Send Message</button></div>
-        </form> *@
-        <!--End Contact Form -->
+        </form> *@<!--End Contact Form -->
 
     </div>
 </section>

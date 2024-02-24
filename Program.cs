@@ -36,6 +36,7 @@ namespace Yummy
             builder.Services.AddScoped<IEvent, EventRepoService>();
             builder.Services.AddScoped<IMeal, MealRepoService>();
             builder.Services.AddScoped<IReview, ReviewRepoService>();
+
             builder.Services.AddAuthentication().AddFacebook(options =>
             {
                 options.ClientId = "905510721246232";
@@ -49,6 +50,9 @@ namespace Yummy
                 options.ClientSecret = "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";
             }
                );
+
+            builder.Services.AddScoped<IBooking, BookingRepoService>();
+
 
             var app = builder.Build();
 

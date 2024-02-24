@@ -39,5 +39,8 @@ namespace Yummy.Data
                 ) ;
             base.OnModelCreating(builder);
         }
+
+        public virtual DbSet<Booking> BookingTables { get; set; }
+
     }
 }
