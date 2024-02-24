@@ -252,6 +252,7 @@ namespace Yummy.Data.Migrations
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 

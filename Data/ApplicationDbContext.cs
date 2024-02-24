@@ -17,6 +17,7 @@ namespace Yummy.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(
