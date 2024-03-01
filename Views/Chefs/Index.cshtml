@@ -4,50 +4,42 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JobTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Brief)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Image)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobTitle)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brief)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
+
+
+<section id="chefs" class="chefs section-bg">
+    <div class="container">
+
+        <div class="section-header">
+            <h2>Chefs</h2>
+            <p>Our <span>Proffesional</span> Chefs</p>
+        </div>
+
+        <div class="row gy-4">
+            @foreach (var chef in Model)
+    {
+<div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+    <div class="chef-member">
+        <div class="member-img">
+             <img src="@("/images/"+chef.Image)" class="img-fluid" alt="">
+            <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="member-info">
+                    <h5 class="card-title">@chef.Name</h5>
+                    <p class="card-text">
+                        <strong>@chef.JobTitle</strong><br>
+                        @chef.Brief
+                    </p>
+                </div>
+    </div>
+</div>
 }
-    </tbody>
-</table>
+</div>
+    </div>
+</section>
+

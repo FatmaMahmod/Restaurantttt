@@ -5,7 +5,11 @@
 }
 
 <h1>Index</h1>
-
+<div>
+    <button>
+        <a class="btn btn-outline-danger btn-lg" asp-area="" asp-controller="Admin" asp-action="AdminView">Back To Admin Page</a>
+    </button>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -24,9 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.UserId)
             </th>
-            <th>
+           @*  <th>
                 @Html.DisplayNameFor(model => model.UserName)
-            </th>
+            </th> *@
             
         </tr>
     </thead>
@@ -45,9 +49,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.UserId)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.UserName)
-            </td>
+            </td> *@
             
         </tr>
 }
