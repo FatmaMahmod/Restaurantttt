@@ -52,14 +52,14 @@ namespace Yummy.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "8a7a0315-33ba-4f05-a8c4-0c22338d8ab4",
+                            ConcurrencyStamp = "b6b4d88a-fbcb-4cda-9118-87aca0421ebb",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "40dd3289-c687-47dd-b0dc-655db3711977",
+                            ConcurrencyStamp = "4545e131-9b57-4ac1-a13d-6ba666ba4af2",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -242,13 +242,19 @@ namespace Yummy.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+
+            modelBuilder.Entity("Yummy.Models.book", b =>
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -341,9 +347,17 @@ namespace Yummy.Data.Migrations
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+
+                    b.HasKey("Id");
+
+                    b.ToTable("books");
+                });
+
 
                     b.Property<string>("Phone")
                         .IsRequired()
@@ -356,6 +370,7 @@ namespace Yummy.Data.Migrations
 
                     b.ToTable("BookingTables");
                 });
+
 
 
             modelBuilder.Entity("YUMMY.Models.Category", b =>

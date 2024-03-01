@@ -18,6 +18,10 @@ namespace Yummy.Data
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
 
+        public virtual DbSet<book> books { get; set; }
+
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(
