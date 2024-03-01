@@ -1,20 +1,25 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Yummy.Data;
 using Yummy.Models;
+using Yummy.Repository;
 
 namespace Yummy.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        public IHome home { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHome hom)
         {
-            _logger = logger;
+          home = hom;
         }
 
         public IActionResult Index()
         {
+            ViewBag.chef = home.GetAllChef();
+            ViewBag.events = home.GetAllEvent();
+
             return View();
         }
 
