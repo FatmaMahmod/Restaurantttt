@@ -52,10 +52,14 @@
         margin-right: 0;
        */}
     }
+
+        .m {
+           
+        }
   </style>
 
   <!-- Jumbotron -->
-  <div class="container py-4">
+  <div class="container py-4 text-center" style="width:60% ; margin:auto">
     <div class="row g-0 align-items-center">
       <div class="col-lg-6 mb-5 mb-lg-0">
         <div class="card cascading-right" style="
@@ -71,15 +75,15 @@
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                      <input asp-for="Input.FristName" id="form3Example1" class="form-control" autocomplete="username" aria-required="true" />
-                      <label asp-for="Input.FristName" for="form3Example1">First name</label>
+                      <input asp-for="Input.FristName" placeholder="FirstName" id="form3Example1" class="form-control" autocomplete="username" aria-required="true" />
+                      @* <label asp-for="Input.FristName" for="form3Example1">First name</label> *@
                       <span asp-validation-for="Input.FristName" class="text-danger"></span>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                      <input asp-for="Input.LastName" id="form3Example2" class="form-control" autocomplete="username" aria-required="true" />
-                      <label asp-for="Input.LastName" for="form3Example2">Last name</label>
+                      <input asp-for="Input.LastName" placeholder="LastName" id="form3Example2" class="form-control" autocomplete="username" aria-required="true" />
+                      @* <label asp-for="Input.LastName" for="form3Example2">Last name</label> *@
                       <span asp-validation-for="Input.LastName" class="text-danger"></span>
                   </div>
                 </div>
@@ -87,20 +91,20 @@
 
               <!-- Email input -->
               <div class="form-outline mb-4">
-                     <input asp-for="Input.Email" id="form3Example3" class="form-control" autocomplete="username" aria-required="true" />
-                     <label asp-for="Input.Email" for="form3Example3">Email address</label>
+                                <input asp-for="Input.Email" placeholder="Email" id="form3Example3" class="form-control" autocomplete="username" aria-required="true" />
+                     @* <label asp-for="Input.Email" for="form3Example3">Email address</label> *@
                      <span asp-validation-for="Input.Email" class="text-danger"></span>
               </div>
 
               <!-- Password input -->
               <div class="form-outline mb-4">
-                    <input asp-for="Input.Password" id="form3Example4" class="form-control" autocomplete="new-password" aria-required="true" />
-                    <label asp-for="Input.Password" for="form3Example4">Password</label>
+                                <input asp-for="Input.Password" placeholder="Password" id="form3Example4" class="form-control" autocomplete="new-password" aria-required="true" />
+                    @* <label asp-for="Input.Password" for="form3Example4">Password</label> *@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
               </div>
               <div class="form-outline mb-4">
-                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-                    <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword" placeholder="ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                    @* <label asp-for="Input.ConfirmPassword">Confirm Password</label> *@
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
 
               </div>
@@ -167,7 +171,9 @@
       </div>
 
       <div class="col-lg-6 mb-5 mb-lg-0">
-        <img src="/img/gallery/gallery-5.jpg" class="w-100 rounded-4 shadow-4"
+                <img src="/img/gallery/gallery-5.jpg" class=" rounded-4 shadow-4 im" style=" max-width: 500px;
+            height: 570px;
+            margin-left: 10%;"
           alt="" />
       </div>
     </div>
