@@ -1,0 +1,36 @@
+﻿@model IEnumerable<YUMMY.Models.Meal>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search</h1>
+
+<style>
+    .h:hover {
+        background-color: rgba(253, 208, 118, 0.3);
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7);
+        transform: scale(1);
+    }
+</style>
+
+<div class="row gy-5 text-center">
+
+    @if (!Model.Any())
+    {
+        <p>No meal found</p>
+    }
+    else
+    {
+        foreach (var meal in Model)
+        {
+            <div class="col-lg-4 menu-item card mx-4 h" style="width: 20rem;margin-top: 5%">
+                <img src="~/img/menu/@meal.MealImage" alt="Meal Image" style="max-width: 300px;height: 300px;" />
+                <br /><br />
+                <h5>@meal.MealName</h5>
+                <h5 class="price">$@meal.MealPrice</h5>
+                <a href="#" class="btn btn-danger mb-2 mt-2">Details</a>
+            </div>
+        }
+    }
+</div>
