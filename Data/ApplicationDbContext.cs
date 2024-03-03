@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 using Yummy.Models;
 using YUMMY.Models;
 
@@ -41,11 +42,20 @@ namespace Yummy.Data
                     NormalizedName = "user",
                     ConcurrencyStamp = Guid.NewGuid().ToString()
                 }
-                ) ;
+                );
             base.OnModelCreating(builder);
+
+
+            // Other configurations...
+
+
+            // Other configurations...
         }
 
-        public virtual DbSet<Booking> BookingTables { get; set; }
+    
+public virtual DbSet<Booking> BookingTables { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
+    
 
     }
 }

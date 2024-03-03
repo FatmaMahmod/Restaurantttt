@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240302093624_mealaddv5")]
+    partial class mealaddv5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace Yummy.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "2770ff7f-d026-4022-bf23-c9729fa8aa67",
+                            ConcurrencyStamp = "e77050c2-59bf-4a62-ba64-95dff3473116",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "1d5d4386-3a77-479f-8ee2-7fa5f6154f07",
+                            ConcurrencyStamp = "9a38e577-b870-4973-b7d3-2f693bff7f84",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -289,32 +291,6 @@ namespace Yummy.Data.Migrations
                     b.ToTable("BookingTables");
                 });
 
-            modelBuilder.Entity("Yummy.Models.cart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ApplicationUserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MealId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("MealId");
-
-                    b.ToTable("carts");
-                });
-
             modelBuilder.Entity("YUMMY.Models.Category", b =>
                 {
                     b.Property<int>("ID")
@@ -419,6 +395,12 @@ namespace Yummy.Data.Migrations
                     b.Property<string>("MealRating")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("count")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("totalsum")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("CategoryID");
@@ -500,21 +482,6 @@ namespace Yummy.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Yummy.Models.cart", b =>
-                {
-                    b.HasOne("Yummy.Data.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
-                    b.HasOne("YUMMY.Models.Meal", "Meal")
-                        .WithMany()
-                        .HasForeignKey("MealId");
-
-                    b.Navigation("ApplicationUser");
-
-                    b.Navigation("Meal");
                 });
 
             modelBuilder.Entity("YUMMY.Models.Meal", b =>

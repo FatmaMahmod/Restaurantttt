@@ -22,6 +22,7 @@
             @* <p class="ingredients">@meal.MealIngradints</p> *@
              <h5 class="price">$@meal.MealPrice</h5>
             <a href="#" class="btn btn-danger mb-2 mt-2">Details</a>
+            <a asp-action="Details" asp-route-id="@meal.ID">Back to List</a>
         </div>
         
 

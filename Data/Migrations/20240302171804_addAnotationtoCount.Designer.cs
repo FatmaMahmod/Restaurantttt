@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240302171804_addAnotationtoCount")]
+    partial class addAnotationtoCount
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace Yummy.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "2770ff7f-d026-4022-bf23-c9729fa8aa67",
+                            ConcurrencyStamp = "c3277dab-4187-4492-a739-3985543d3998",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "1d5d4386-3a77-479f-8ee2-7fa5f6154f07",
+                            ConcurrencyStamp = "d42c8b0e-932b-4f2e-a54e-581d06dbc4bf",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -259,37 +261,7 @@ namespace Yummy.Data.Migrations
                     b.ToTable("books");
                 });
 
-            modelBuilder.Entity("Yummy.Models.Booking", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Message")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("peopleNumber")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("BookingTables");
-                });
-
-            modelBuilder.Entity("Yummy.Models.cart", b =>
+            modelBuilder.Entity("Yummy.Models.Cart", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -312,7 +284,7 @@ namespace Yummy.Data.Migrations
 
                     b.HasIndex("MealId");
 
-                    b.ToTable("carts");
+                    b.ToTable("Carts");
                 });
 
             modelBuilder.Entity("YUMMY.Models.Category", b =>
@@ -502,7 +474,7 @@ namespace Yummy.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Yummy.Models.cart", b =>
+            modelBuilder.Entity("Yummy.Models.Cart", b =>
                 {
                     b.HasOne("Yummy.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()

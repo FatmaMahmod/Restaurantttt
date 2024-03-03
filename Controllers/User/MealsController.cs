@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using YUMMY.Models;
 using Yummy.Data;
+using Yummy.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Yummy.Controllers.User
 {
@@ -141,28 +144,79 @@ namespace Yummy.Controllers.User
 
 
         // GET: Meals/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null || _context.Meals == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    var meal = await _context.Meals
+        //        .Include(m => m.Category)
+        //        .FirstOrDefaultAsync(m => m.ID == id);
+        //    if (meal == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(meal);
+        //}
+
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Meals == null)
+            var mealFromDB = _context.Meals.Include(x => x.Category)
+                .Where(x => x.ID == id)
+                .FirstOrDefault();
+
+            if (mealFromDB == null)
             {
                 return NotFound();
             }
 
-            var meal = await _context.Meals
-                .Include(m => m.Category)
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (meal == null)
+            var cart = new cart
             {
-                return NotFound();
-            }
+                Meal = mealFromDB,
+                MealId = mealFromDB.ID,
+                Count = 1,
+            };
 
-            return View(meal);
+            return View(cart);
         }
-	
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> Details([Bind("MealId, Count")] cart cart)
+        {
+            if (ModelState.IsValid)
+            {
+                var claimIdentity = (ClaimsIdentity)this.User.Identity;
+                var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+                cart.ApplicationUserId = claim.Value;
 
+                var cartfromDB = await _context.carts.Include(x=>x.Meal)
+                    .Where(x => x.ApplicationUserId == cart.ApplicationUserId && x.MealId == cart.MealId)
+                    .FirstOrDefaultAsync();
+                var meal = _context.Meals.Include(x=>x.Category).Where(x => x.ID==cart.MealId).FirstOrDefault();
+              //  var catname = ;
+                if (cartfromDB == null)
+                {
+                    _context.carts.Add(cart);
+                }
+                else
+                {
+                    cartfromDB.Count += cart.Count;
+                }
+
+                _context.SaveChanges();
+                //var catname = cart
+                return RedirectToAction("MenuItems", new { categoryName = meal.Category.CategoryName });
+            }
+            
+            return RedirectToAction("MenuItems");
+        }
 
     }
 
-	}
 }
+
