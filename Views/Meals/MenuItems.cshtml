@@ -22,7 +22,7 @@
             <h5>@meal.MealName</h5>
             @* <p class="ingredients">@meal.MealIngradints</p> *@
              <h5 class="price">$@meal.MealPrice</h5>
-            <a href="#" class="btn btn-danger mb-2 mt-2">Details</a>
+            <a asp-action="Details" asp-route-id="@meal.ID" class="btn btn-danger mb-2 mt-2"style="background-color : var(--color-primary) " >Details</a>
         </div>
         
 

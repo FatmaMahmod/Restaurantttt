@@ -23,47 +23,91 @@ namespace Yummy.Data.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-            {
-                b.Property<string>("Id")
-                    .HasColumnType("nvarchar(450)");
 
-                b.Property<string>("ConcurrencyStamp")
-                    .IsConcurrencyToken()
-                    .HasColumnType("nvarchar(max)");
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
-                b.Property<string>("Name")
-                    .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
 
-                b.Property<string>("NormalizedName")
-                    .HasMaxLength(256)
-                    .HasColumnType("nvarchar(256)");
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                b.HasKey("Id");
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                b.HasIndex("NormalizedName")
-                    .IsUnique()
-                    .HasDatabaseName("RoleNameIndex")
-                    .HasFilter("[NormalizedName] IS NOT NULL");
+                    b.HasKey("Id");
 
-                b.ToTable("AspNetRoles", (string)null);
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
-                b.HasData(
-                    new
-                    {
-                        Id = "1",
-                        ConcurrencyStamp = "b6b4d88a-fbcb-4cda-9118-87aca0421ebb",
-                        Name = "Admin",
-                        NormalizedName = "admin"
-                    },
-                    new
-                    {
-                        Id = "2",
-                        ConcurrencyStamp = "4545e131-9b57-4ac1-a13d-6ba666ba4af2",
-                        Name = "User",
-                        NormalizedName = "user"
-                    });
-            });
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "2770ff7f-d026-4022-bf23-c9729fa8aa67",
+                            Name = "Admin",
+                            NormalizedName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "1d5d4386-3a77-479f-8ee2-7fa5f6154f07",
+                            Name = "User",
+                            NormalizedName = "user"
+                        });
+                });
+
+//             {
+//                 b.Property<string>("Id")
+//                     .HasColumnType("nvarchar(450)");
+
+//                 b.Property<string>("ConcurrencyStamp")
+//                     .IsConcurrencyToken()
+//                     .HasColumnType("nvarchar(max)");
+
+//                 b.Property<string>("Name")
+//                     .HasMaxLength(256)
+//                     .HasColumnType("nvarchar(256)");
+
+//                 b.Property<string>("NormalizedName")
+//                     .HasMaxLength(256)
+//                     .HasColumnType("nvarchar(256)");
+
+//                 b.HasKey("Id");
+
+//                 b.HasIndex("NormalizedName")
+//                     .IsUnique()
+//                     .HasDatabaseName("RoleNameIndex")
+//                     .HasFilter("[NormalizedName] IS NOT NULL");
+
+//                 b.ToTable("AspNetRoles", (string)null);
+
+//                 b.HasData(
+//                     new
+//                     {
+//                         Id = "1",
+//                         ConcurrencyStamp = "b6b4d88a-fbcb-4cda-9118-87aca0421ebb",
+//                         Name = "Admin",
+//                         NormalizedName = "admin"
+//                     },
+//                     new
+//                     {
+//                         Id = "2",
+//                         ConcurrencyStamp = "4545e131-9b57-4ac1-a13d-6ba666ba4af2",
+//                         Name = "User",
+//                         NormalizedName = "user"
+//                     });
+//             });
+
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
             {
@@ -239,6 +283,51 @@ namespace Yummy.Data.Migrations
                     .HasDatabaseName("UserNameIndex")
                     .HasFilter("[NormalizedUserName] IS NOT NULL");
 
+
+            modelBuilder.Entity("Yummy.Models.book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("books");
+                });
+
+            modelBuilder.Entity("Yummy.Models.Booking", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("peopleNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
                 b.ToTable("AspNetUsers", (string)null);
             });
 
@@ -250,14 +339,43 @@ namespace Yummy.Data.Migrations
 
                 SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+
                 b.Property<string>("Name")
                     .IsRequired()
                     .HasColumnType("nvarchar(max)");
+
+
+            modelBuilder.Entity("Yummy.Models.cart", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MealId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("MealId");
+
+                    b.ToTable("carts");
+                });
 
                 b.HasKey("Id");
 
                 b.ToTable("books");
             });
+
 
             modelBuilder.Entity("YUMMY.Models.Category", b =>
             {
@@ -445,6 +563,21 @@ namespace Yummy.Data.Migrations
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
+
+            modelBuilder.Entity("Yummy.Models.cart", b =>
+                {
+                    b.HasOne("Yummy.Data.ApplicationUser", "ApplicationUser")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUserId");
+
+                    b.HasOne("YUMMY.Models.Meal", "Meal")
+                        .WithMany()
+                        .HasForeignKey("MealId");
+
+                    b.Navigation("ApplicationUser");
+
+                    b.Navigation("Meal");
+                });
 
             modelBuilder.Entity("YUMMY.Models.Meal", b =>
             {
