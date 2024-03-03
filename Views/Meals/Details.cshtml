@@ -33,8 +33,8 @@
             <div class="col-md-12">
                 <div class="text-center">
                     <!-- Submit button as "Add to Cart" -->
-                    <button type="submit" class="btn btn-success">Add to Cart</button>
-                    <a class="btn btn-secondary ml-2" asp-action="Index">Back to List</a>
+                    <button type="submit" class="btn btn-success" style="background-color: #6c757d;">Add to Cart</button>
+                    <a class="btn btn-secondary ml-2" asp-action="MenuItems" asp-route-categoryName="@Model.Meal.Category.CategoryName" style="background-color: var(--color-primary)">Back to List</a>
                 </div>
             </div>
         </div>
