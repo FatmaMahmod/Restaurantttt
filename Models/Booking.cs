@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using Yummy.ViewModel;
+
 namespace Yummy.Models
 {
 	public class Booking
@@ -23,8 +25,8 @@ namespace Yummy.Models
 
 		public string? Message { get; set; }
 
-		//[ForeignKey("User")]
-		//public int userID { get; set; }
-		//public User User { get; set; }
+		[ForeignKey("User")]
+		public string? userID { get; set; }
+		public ApplicationUser? User { get; set; }
 	}
 }

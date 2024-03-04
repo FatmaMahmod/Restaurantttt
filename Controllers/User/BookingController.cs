@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Yummy.Data;
@@ -7,12 +8,15 @@ using Yummy.Repository;
 
 namespace Yummy.Controllers.User
 {
-    //[Authorize]
+    [Authorize]
     public class BookingController : Controller
     {
         private readonly IBooking _booking_table_service;
-        public BookingController(IBooking booking) {
+        private readonly IFindUser _find_user;
+
+        public BookingController(IBooking booking, IFindUser find_user) {
             _booking_table_service = booking;
+            _find_user = find_user;
         }
         [HttpGet]
         public ActionResult Book()
@@ -26,6 +30,7 @@ namespace Yummy.Controllers.User
 
             if (ModelState.IsValid)
             {
+                book_table.userID = _find_user.GetUserId();
                 _booking_table_service.InsertBookingTables(book_table);
                 return RedirectToAction("Index", "Home"); // Assuming "HomeController" is your controller name
             }

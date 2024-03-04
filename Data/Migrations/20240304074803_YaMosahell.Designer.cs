@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240304074803_YaMosahell")]
+    partial class YaMosahell
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace Yummy.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "4f7dc67c-fb1d-49d2-bb64-0cadf8419141",
+                            ConcurrencyStamp = "69b9368b-2629-4bb8-a5e0-d927638e2ac6",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "fee00bd5-0e06-42df-a768-c8bec7237d82",
+                            ConcurrencyStamp = "9c13bf5b-bba2-4b14-be47-06a420bc8d62",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -171,6 +173,23 @@ namespace Yummy.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Yummy.Models.book", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("books");
+                });
+
             modelBuilder.Entity("Yummy.Models.Booking", b =>
                 {
                     b.Property<int>("ID")
@@ -196,12 +215,7 @@ namespace Yummy.Data.Migrations
                     b.Property<int>("peopleNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("userID")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("ID");
-
-                    b.HasIndex("userID");
 
                     b.ToTable("BookingTables");
                 });
@@ -488,15 +502,6 @@ namespace Yummy.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Yummy.Models.Booking", b =>
-                {
-                    b.HasOne("Yummy.ViewModel.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("userID");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Yummy.Models.cart", b =>

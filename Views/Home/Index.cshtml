@@ -19,7 +19,8 @@
                 <h2>Enjoy Your Healthy<br>Delicious Food</h2>
                 <p data-aos-delay="100">Sed autem laudantium dolores. Voluptatem itaque ea consequatur eveniet. Eum quas beatae cumque eum quaerat.</p>
                 <div class="d-flex">
-                    <a href="#book-a-table" class="btn-book-a-table">Book a Table</a>
+                    <a class="btn-book-a-table" asp-controller="Booking" asp-action="Book">Book a Table</a>
+                    
                     <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
                 </div>
             </div>
@@ -41,17 +42,6 @@
             <p>Learn More <span>About Us</span></p>
         </div>
        
-            <a class="nav-link text-dark" asp-area="" asp-controller="AdMeal" asp-action="Index">Meals</a>
-        
-            <a class="nav-link text-dark" asp-area="" asp-controller="AdChef" asp-action="Index">Chefs</a>
-        
-            <a class="nav-link text-dark" asp-area="" asp-controller="AdEvent" asp-action="Index">Events</a>
-       
-            <a class="nav-link text-dark" asp-area="" asp-controller="AdCategory" asp-action="Index">Categories</a>
-        
-            <a class="nav-link text-dark" asp-area="" asp-controller="AdReviews" asp-action="Index">Reviews</a>
-       
-
         <div class="row gy-4">
             <div class="col-lg-7 position-relative about-img" style="background-image: url(/img/about.jpg) ;">
                 <div class="call-us position-absolute">

@@ -35,6 +35,7 @@
 </head>
 <body>
  
+    <br />
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="container-fluid d-flex align-items-center justify-content-between">         
                  <a  asp-area="" asp-controller="Home" asp-action="Index">
@@ -44,47 +45,42 @@
                 @* <h1>Yummy<span>.</span></h1> *@
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li>
+                   @*  <li>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
+                    </li> *@
 @*                     <li>
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                     </li> *@
-                    <li><a href="#about">About</a></li>
+                   @*  <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#chefs">Chefs</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#gallery">Gallery</a></li> *@
 
                   
 
                 @*     <li class="dropdown">
  *@
-                    <li><a href="#contact">Contact</a></li>
-                    <li>
-                        <a href="https://localhost:44362/cart/index" class="nav-link">
+                    @* <li><a href="#contact">Contact</a></li> *@
+                 @*    <li>
+                        <a asp-action="Index" asp-controller="Cart" class="nav-link">
                             Cart  <i class="bi bi-cart"></i>
                         </a>
-                    </li>
+                    </li> *@
                 </ul>
             </nav>
 
-            @* Search 
 
-            <form class="form-wrapper cf">
-                <input type="text" placeholder="Search here..." required>
-                <a class="btn" href="https://localhost:44362/Home/Search?searching=" type="submit">Search</a>
-            </form>
- 
+       @*      <div>
 
-             end search *@
-
-
+            </div> *@
             <form class="form-wrapper cf" action="/Home/Search" method="get">
-                <input type="text" name="searching" placeholder="Search here..." required>
+				<input type="text" name="searching" placeholder="Search here..." required style="width:700px;" >
                 <button class="btn" type="submit">Search</button>
             </form>
-
+            <a asp-action="Index" asp-controller="Cart" class="nav-link">
+                Cart  <i class="bi bi-cart"></i>
+            </a>
 
             <a class="btn-book-a-table" asp-controller="Booking" asp-action="Book">Book a Table</a>
             @* <a asp-action="Index">Back to List</a> *@

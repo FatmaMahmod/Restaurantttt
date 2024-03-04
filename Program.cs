@@ -4,6 +4,7 @@ using Yummy.Data;
 using Yummy.Models;
 using Yummy.Repository;
 using Yummy.Serviece;
+using Yummy.ViewModel;
 using YUMMY.Models;
 
 namespace Yummy
@@ -35,6 +36,8 @@ namespace Yummy
             builder.Services.AddScoped<IMeal, MealRepoService>();
             builder.Services.AddScoped<IReview, ReviewRepoService>();
             builder.Services.AddScoped<IHome, HomeRepoService>();
+            builder.Services.AddScoped<IFindUser, FindUserRepoService>();
+
 
             builder.Services.AddAuthentication().AddFacebook(options =>
             {

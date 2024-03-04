@@ -1,7 +1,12 @@
-﻿using Yummy.Data;
+﻿using System.Security.Claims;
+using Yummy.Data;
 using Yummy.Models;
 using Yummy.Repository;
 using YUMMY.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+
 
 namespace Yummy.Serviece
 {
@@ -28,10 +33,21 @@ namespace Yummy.Serviece
 
         public void InsertBookingTables(Booking newBooking)
         {
-            // Placeholder logic to insert a new event
+            // Insert the new booking
             _context.BookingTables.Add(newBooking);
             _context.SaveChanges();
         }
+
+        //public void InsertBookingTables(Booking newBooking)
+        //{
+        //    // Placeholder logic to insert a new event
+        //    var claimIdentity = (ClaimsIdentity)this.User.Identity;
+        //    var claim = claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+        //    //newBooking.userID= claimIdentity.FindFirst(ClaimTypes.NameIdentifier);
+        //    _context.BookingTables.Add(newBooking);
+        //    _context.SaveChanges();
+        //}
 
         public void UpdateBookingTables(int id, Booking updatedBooking)
         {

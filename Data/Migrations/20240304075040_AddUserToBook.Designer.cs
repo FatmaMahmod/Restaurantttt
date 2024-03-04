@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yummy.Data;
 
@@ -11,9 +12,10 @@ using Yummy.Data;
 namespace Yummy.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240304075040_AddUserToBook")]
+    partial class AddUserToBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -52,14 +54,14 @@ namespace Yummy.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "4f7dc67c-fb1d-49d2-bb64-0cadf8419141",
+                            ConcurrencyStamp = "ac6a1a7a-895d-4437-82ef-b1ba2993a180",
                             Name = "Admin",
                             NormalizedName = "admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "fee00bd5-0e06-42df-a768-c8bec7237d82",
+                            ConcurrencyStamp = "03444b95-0674-438b-92ca-372e06ec658f",
                             Name = "User",
                             NormalizedName = "user"
                         });
@@ -197,6 +199,7 @@ namespace Yummy.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("userID")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
@@ -494,7 +497,9 @@ namespace Yummy.Data.Migrations
                 {
                     b.HasOne("Yummy.ViewModel.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("userID");
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

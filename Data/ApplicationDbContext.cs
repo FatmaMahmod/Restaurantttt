@@ -3,12 +3,17 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
 using Yummy.Models;
+using Yummy.ViewModel;
 using YUMMY.Models;
 
 namespace Yummy.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public ApplicationDbContext()
+        {
+
+        }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -18,10 +23,8 @@ namespace Yummy.Data
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
-
-        public virtual DbSet<book> books { get; set; }
-
-
+        public virtual DbSet<Booking> BookingTables { get; set; }
+        public virtual DbSet<cart> carts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -53,8 +56,6 @@ namespace Yummy.Data
         }
 
     
-public virtual DbSet<Booking> BookingTables { get; set; }
-        public virtual DbSet<cart> carts { get; set; }
     
 
     }

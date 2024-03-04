@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Yummy.Data;
+using Yummy.ViewModel;
 using YUMMY.Models;
 
 namespace Yummy.Models
